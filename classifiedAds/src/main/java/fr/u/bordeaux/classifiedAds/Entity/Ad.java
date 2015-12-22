@@ -34,7 +34,7 @@ public class Ad implements Serializable{
 	private String currency;
 	
 	@Column
-	private Timestamp submitionDate;
+	private Timestamp submissionDate;
 
 	public long getId() {
 		return id;
@@ -76,12 +76,12 @@ public class Ad implements Serializable{
 		this.currency = currency;
 	}
 
-	public Timestamp getSubmitionDate() {
-		return submitionDate;
+	public Timestamp getSubmissionDate() {
+		return submissionDate;
 	}
 
-	public void setSubmitionDate(Timestamp submitionDate) {
-		this.submitionDate = submitionDate;
+	public void setSubmissionDate(Timestamp submitionDate) {
+		this.submissionDate = submitionDate;
 	}
 
 	public String getDescription() {

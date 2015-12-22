@@ -6,9 +6,14 @@
 	version="2.2">
 
 <managed-bean>
-	<managed-bean-name>AdController</managed-bean-name>
-	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.AdController</managed-bean-class>
-	<managed-bean-scope>request</managed-bean-scope>
+	<managed-bean-name>AdCtrl</managed-bean-name>
+	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.AdCtrl</managed-bean-class>
+	<managed-bean-scope>view</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+	<managed-bean-name>CredentialsCtrl</managed-bean-name>
+	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.CredentialsCtrl</managed-bean-class>
+	<managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
 
 </faces-config>
