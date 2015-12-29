@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+	<ui:include src="tabMenu.xhtml"></ui:include>
+	<h:form>
+		<p:outputLabel for="login" value="log in">
+			</p:outputLabel>
+			<h:panelGrid id="login" columns="2" rendered="#{!userCtrl.loggedIn}">
+				<p:outputLabel for="mail1">Mail:</p:outputLabel>
+				<p:inputText id="mail1" value="#{userCtrl.user.mail}" />
+				<p:outputLabel for="password1">Password:</p:outputLabel>
+				<p:inputText id="password1" value="#{userCtrl.user.password}" />
+			</h:panelGrid>
+			<h:commandButton value="login" action="#{userCtrl.login}"
+				rendered="#{!userCtrl.loggedIn}" />
+			<h:commandButton value="logout" action="#{userCtrl.logout}"
+				rendered="#{userCtrl.loggedIn}" />
+	</h:form>
+	<h:form>
+		<p:outputLabel for="register" value="register"></p:outputLabel>
+		<!-- TODO verify password and mail -->
+		<h:panelGrid id="register" columns="2"
+			rendered="#{!userCtrl.loggedIn}">
+			<p:outputLabel for="mail2">Mail:</p:outputLabel>
+			<p:inputText id="mail2" value="#{userCtrl.user.mail}" />
+			<p:outputLabel for="password2">Password:</p:outputLabel>
+			<p:inputText id="password2" value="#{userCtrl.user.password}" />
+		</h:panelGrid>
+		<h:commandButton value="register" action="#{userCtrl.register}"
+			rendered="#{!userCtrl.loggedIn}" />
+	</h:form>
+</h:body>
+</html>

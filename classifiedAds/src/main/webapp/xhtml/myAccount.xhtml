@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<!-- username
+	xmlns:pt="http://java.sun.com/jsf/passthrough" -->
+<h:outputScript name="jquery/jquery.js" library="primefaces" />
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+	<ui:include src="tabMenu.xhtml"></ui:include>
+	<h:form>
+		<h:panelGrid>
+			<p:outputLabel value="mail" for="mail"></p:outputLabel>
+			<p:inputText id="mail" value="#{userCtrl.user.mail}"></p:inputText>
+
+			<p:outputLabel value="password" for="password"></p:outputLabel>
+			<p:inputText id="password" value="#{userCtrl.user.password}"></p:inputText>
+
+			<p:outputLabel value="user name" for="username"></p:outputLabel>
+			<p:inputText id="username" value="#{userCtrl.user.username}"></p:inputText>
+
+			<p:outputLabel value="address" for="address"></p:outputLabel>
+			<p:inputTextarea id="address" value="#{userCtrl.user.address}"></p:inputTextarea>
+
+			<p:outputLabel value="telephone number" for="telephone"></p:outputLabel>
+			<p:inputText id="telephone" value="#{userCtrl.user.telephone}"></p:inputText>
+
+			<p:commandButton value="save changes" action="#{userCtrl.update}"></p:commandButton>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

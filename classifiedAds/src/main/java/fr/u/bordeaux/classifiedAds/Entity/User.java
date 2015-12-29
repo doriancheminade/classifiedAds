@@ -10,13 +10,20 @@ public class User{
 	private long id;
 	
 	@Column(nullable=false)
-	private String mail;
+	private String mail;	
+	
+	@Column(nullable=false)
+	private String password;
 	
 	@Column
 	private String username;
 	
-	@Column(nullable=false)
-	private String password;
+	@Column
+	private String address;
+	
+	@Column
+	private String telephone;
+	
 
 	public long getId() {
 		return id;
@@ -50,6 +57,22 @@ public class User{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 	
 }

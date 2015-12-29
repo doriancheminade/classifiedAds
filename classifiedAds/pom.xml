@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>
 			<artifactId>myfaces-api</artifactId>
-			<version>2.1.15</version>
+			<version>2.2.9</version>
 			<!-- le scope provided indique que cette dépendance sera fournie pour 
 				le serveur à l'exécution -->
 			<scope>provided</scope>

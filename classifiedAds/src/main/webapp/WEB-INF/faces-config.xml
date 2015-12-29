@@ -11,8 +11,8 @@
 	<managed-bean-scope>view</managed-bean-scope>
 </managed-bean>
 <managed-bean>
-	<managed-bean-name>CredentialsCtrl</managed-bean-name>
-	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.CredentialsCtrl</managed-bean-class>
+	<managed-bean-name>UserCtrl</managed-bean-name>
+	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.UserCtrl</managed-bean-class>
 	<managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
 
