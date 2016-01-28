@@ -20,13 +20,22 @@
 			<p:inputText id="mail" value="#{userCtrl.user.mail}"></p:inputText>
 
 			<p:outputLabel value="password" for="password"></p:outputLabel>
-			<p:inputText id="password" value="#{userCtrl.user.password}"></p:inputText>
+			<p:password id="password" value="#{userCtrl.user.password}"></p:password>
 
 			<p:outputLabel value="user name" for="username"></p:outputLabel>
 			<p:inputText id="username" value="#{userCtrl.user.username}"></p:inputText>
 
-			<p:outputLabel value="address" for="address"></p:outputLabel>
-			<p:inputTextarea id="address" value="#{userCtrl.user.address}"></p:inputTextarea>
+			<p:outputLabel value="country" for="country"></p:outputLabel>
+			<p:inputTextarea id="country" value="#{userCtrl.user.address.country}"></p:inputTextarea>
+			
+			<p:outputLabel value="area" for="area"></p:outputLabel>
+			<p:inputTextarea id="area" value="#{userCtrl.user.address.area}"></p:inputTextarea>
+			
+			<p:outputLabel value="street" for="street"></p:outputLabel>
+			<p:inputTextarea id="street" value="#{userCtrl.user.address.street}"></p:inputTextarea>
+			
+			<p:outputLabel value="address detail" for="addressmisc"></p:outputLabel>
+			<p:inputTextarea id="addressmisc" value="#{userCtrl.user.address.misc}"></p:inputTextarea>
 
 			<p:outputLabel value="telephone number" for="telephone"></p:outputLabel>
 			<p:inputText id="telephone" value="#{userCtrl.user.telephone}"></p:inputText>

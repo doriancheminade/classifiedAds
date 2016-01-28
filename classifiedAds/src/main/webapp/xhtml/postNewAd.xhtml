@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:outputScript name="jquery/jquery.js" library="primefaces" />
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+	<h:form enctype="multipart/form-data">
+		<p:panelGrid columns="3" layout="grid">
+
+			<p:outputLabel value="description" for="description"></p:outputLabel>
+			<p:inputTextarea id="description" value="#{adCtrl.ad.description}"></p:inputTextarea>
+			<p:message for="description" />
+
+			<p:outputLabel value="surface area"></p:outputLabel>
+			<p:inputText id="surface" value="#{adCtrl.ad.surfaceArea}"></p:inputText>
+			<p:message for="surface" />
+
+			<p:outputLabel value="price"></p:outputLabel>
+			<p:inputText id="price" value="#{adCtrl.ad.price}"></p:inputText>
+			<p:message for="price" />
+
+			<p:outputLabel value="currency"></p:outputLabel>
+			<p:inputText id="currency" value="#{adCtrl.ad.currency}"></p:inputText>
+			<p:message for="currency" />
+
+			<p:outputLabel value="country"></p:outputLabel>
+			<p:inputText id="country" value="#{adCtrl.ad.address.country}"></p:inputText>
+			<p:message for="country" />
+
+			<p:outputLabel value="area"></p:outputLabel>
+			<p:inputText id="area" value="#{adCtrl.ad.address.area}"></p:inputText>
+			<p:message for="area" />
+
+			<p:fileUpload value="#{adCtrl.uploadedfile}" mode="simple"
+				skinSimple="true" multiple="true" fileLimit="5" sizeLimit="1000000" />
+			<p:commandButton value="upload" ajax="false"
+				actionListener="#{adCtrl.handleImage}"></p:commandButton>
+
+			<input type="hidden" name="publisherid" value="#{userCtrl.user.id}"></input>
+
+			<p:commandButton value="post" 
+				action="#{adCtrl.persist}"></p:commandButton>
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

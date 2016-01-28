@@ -1,9 +1,14 @@
 package fr.u.bordeaux.classifiedAds.Entity;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
-public class User{
+public class User implements Serializable{
+	
+	private static final long serialVersionUID = -5411478145833852072L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -17,13 +22,22 @@ public class User{
 	
 	@Column
 	private String username;
-	
-	@Column
-	private String address;
+
+	/*@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable*/
+	@Embedded
+	private Address address;
 	
 	@Column
 	private String telephone;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="publisher")
+	//@JoinColumn()
+	private transient List<Ad> publishedAds;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	//@JoinColumn()
+	private transient List<Ad> selecteddAds;
 
 	public long getId() {
 		return id;
@@ -59,11 +73,11 @@ public class User{
 		this.password = password;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
@@ -73,6 +87,22 @@ public class User{
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+
+	public List<Ad> getPublishedAds() {
+		return publishedAds;
+	}
+
+	public void setPublishedAds(List<Ad> publishedAds) {
+		this.publishedAds = publishedAds;
+	}
+
+	public List<Ad> getSelecteddAds() {
+		return selecteddAds;
+	}
+
+	public void setSelecteddAds(List<Ad> selecteddAds) {
+		this.selecteddAds = selecteddAds;
 	}
 	
 }

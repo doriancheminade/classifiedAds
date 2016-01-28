@@ -1,9 +1,13 @@
 package fr.u.bordeaux.classifiedAds.Controller;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.*;
 
+import fr.u.bordeaux.classifiedAds.DAO.AdDAO;
 import fr.u.bordeaux.classifiedAds.DAO.UserDAO;
+import fr.u.bordeaux.classifiedAds.Entity.Ad;
 import fr.u.bordeaux.classifiedAds.Entity.User;
 
 @ManagedBean
@@ -11,28 +15,45 @@ import fr.u.bordeaux.classifiedAds.Entity.User;
 public class UserCtrl {
 	@EJB
 	private UserDAO dao;
-	
-	
+	@EJB
+	private AdDAO addao;
+
+
 	public User getUser(){
 		return dao.getUser();
+	}
+	public void setUser(User u){
+		dao.setUser(u);
 	}
 	public boolean isLoggedIn(){
 		return dao.isLoggedIn();
 	}
-	public String register(){
+	public void register(){
 		dao.register();
-		return "";
 	}
-	public String logout(){
+	public void logout(){
 		dao.logout();
-		return "";
 	}
-	public String login(){
+	public void login(){
 		dao.login();
-		return "";
 	}	
-	public String update(){
+	public void update(){
 		dao.update();
-		return "";
+	}
+	public UserDAO getDAO(){
+		return dao;
+	}
+	public List<Ad> getUsersAds() {
+		return addao.getPublishedAds(dao.getUser());
+		//return dao.getUser().getPublishedAds();
+	}
+	public List<Ad> getSavedAds() {
+		return addao.getSavedAds(dao.getUser());
+	}
+	public UserDAO getDao() {
+		return dao;
+	}
+	public void setDao(UserDAO dao) {
+		this.dao = dao;
 	}
 }

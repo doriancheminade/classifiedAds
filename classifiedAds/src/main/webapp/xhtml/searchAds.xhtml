@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:outputScript name="jquery/jquery.js" library="primefaces" />
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+	<ui:include src="tabMenu.xhtml"></ui:include>
+	<f:facet name="header">saved ads</f:facet>
+	<p:accordionPanel activeIndex="-1">
+		<p:tab title="search options">
+			<p:panelGrid>
+				<h:form>
+					<p:row>
+						<p:column>
+							<p:outputLabel for="country" value="country" />
+							<p:selectOneListbox label="country" id="country"
+								value="#{adsCtrl.min.address.country}">
+								<f:selectItems value="#{datasCtrl.country}" />
+							</p:selectOneListbox>
+						</p:column>
+						<p:column>
+							<p:outputLabel for="city" value="city" />
+							<p:selectOneListbox label="city" id="city"
+								value="#{adsCtrl.min.address.area}">
+								<f:selectItems value="#{datasCtrl.city}" />
+							</p:selectOneListbox>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputLabel value="minium price" for="price_min"></h:outputLabel>
+							<p:inputText id="price_min" value="#{adsCtrl.min.price}"></p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputLabel value="maximum price" for="price_max"></h:outputLabel>
+							<p:inputText id="price_max" value="#{adsCtrl.max.price}"></p:inputText>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<h:outputLabel value="minium surface" for="surface_min"></h:outputLabel>
+							<p:inputText id="surface_min" value="#{adsCtrl.min.surfaceArea}"></p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputLabel value="maximum surface" for="surface_max"></h:outputLabel>
+							<p:inputText id="surface_max" value="#{adsCtrl.max.surfaceArea}"></p:inputText>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<p:selectBooleanButton
+								offLabel="currently not using saved search option"
+								onLabel="currently using saved search option"></p:selectBooleanButton>
+						</p:column>
+						<p:column>
+							<p:button value="save search options" icon="ui-icon-star"></p:button>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="4">
+							<p:commandButton value="search" action="#{adsCtrl.search}"
+								update="gridsearch"></p:commandButton>
+						</p:column>
+					</p:row>
+				</h:form>
+			</p:panelGrid>
+		</p:tab>
+	</p:accordionPanel>
+	<p:dataGrid id="gridsearch" columns="3" rows="8" paginator="true"
+		var="ad" value="#{adsCtrl.ads}">
+		<p:panel>
+			<h:outputText value="#{ad.description}"></h:outputText>
+			<p:graphicImage value="#{ad.images.toArray()[0]}"></p:graphicImage>
+			<p:accordionPanel activeIndex="-1">
+				<p:tab title="details">
+					<p:panelGrid columns="2" >
+						<h:outputLabel value="country"></h:outputLabel>
+						<h:outputText value="#{ad.address.country}"></h:outputText>
+		
+						<h:outputLabel value="area"></h:outputLabel>
+						<h:outputText value="#{ad.address.area}"></h:outputText>
+		
+						<h:outputLabel value="street"></h:outputLabel>
+						<h:outputText value="#{ad.address.street}"></h:outputText>
+		
+						<h:outputLabel value="address details"></h:outputLabel>
+						<h:outputText value="#{ad.address.misc}"></h:outputText>
+						
+						<h:outputLabel value="contact"></h:outputLabel>
+						<h:outputText value="#{ad.publisher.mail}"></h:outputText>
+					</p:panelGrid>
+				</p:tab>
+			</p:accordionPanel>
+		</p:panel>
+	</p:dataGrid>
+	<!--<p:dataGrid id="gridother" columns="3" rows="8" paginator="true"
+		var="ad" value="#{adDAO.allAds}">
+		<p:panel>
+			<h:outputText value="#{ad.description}"></h:outputText>
+			<p:graphicImage value="#{ad.images.toArray()[0]}"></p:graphicImage>
+			<p:link outcome="adDetail" value="  detail">
+				<f:param name="adid" value="#{ad.id}"></f:param>
+			</p:link>
+		</p:panel>
+	</p:dataGrid>  -->
+</h:body>
+</html>

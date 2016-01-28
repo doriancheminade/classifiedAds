@@ -2,6 +2,7 @@ package fr.u.bordeaux.classifiedAds.DAO;
 
 import java.util.List;
 
+
 //import javax.ejb.LocalBean;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
@@ -12,7 +13,6 @@ import javax.annotation.*;
 import fr.u.bordeaux.classifiedAds.Entity.User;
 
 @Stateful
-//@LocalBean
 public class UserDAO {
 	private boolean log;
 	private User user;
@@ -71,5 +71,8 @@ public class UserDAO {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public User findUser(Object key){
+		return em.find(User.class, key);
 	}
 }

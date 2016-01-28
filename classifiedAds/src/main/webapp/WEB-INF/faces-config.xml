@@ -6,8 +6,18 @@
 	version="2.2">
 
 <managed-bean>
+	<managed-bean-name>AdsCtrl</managed-bean-name>
+	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.AdsCtrl</managed-bean-class>
+	<managed-bean-scope>view</managed-bean-scope>
+</managed-bean>
+<managed-bean>
 	<managed-bean-name>AdCtrl</managed-bean-name>
 	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.AdCtrl</managed-bean-class>
+	<managed-bean-scope>view</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+	<managed-bean-name>MyAds</managed-bean-name>
+	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.MyAds</managed-bean-class>
 	<managed-bean-scope>view</managed-bean-scope>
 </managed-bean>
 <managed-bean>
@@ -15,5 +25,10 @@
 	<managed-bean-class>fr.u.bordeaux.classifiedAds.Controller.UserCtrl</managed-bean-class>
 	<managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
+<converter>
+	<description>converter for the user type</description>
+	<converter-id>UserConverter</converter-id>
+	<converter-class>fr.u.bordeaux.classifiedAds.util.UserConverter</converter-class>	
+</converter>
 
 </faces-config>
