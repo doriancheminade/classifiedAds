@@ -58,7 +58,12 @@ public class AdsCtrl implements Serializable{
 	public void persist(Ad a){
 		addao.persist(a);
 	}
-
+	public void update(Ad a){
+		addao.update(a);
+	}
+	public void delete(Ad a){
+		addao.delete(a);
+	}
 	public void loadMore(){
 		ads.addAll(addao.getCriteriasAds(u, max, min, order, resNumber));		
 	}

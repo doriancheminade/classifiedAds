@@ -17,26 +17,28 @@
 			<f:facet name="header">posted ads</f:facet>
 			<p:commandButton value="post new ad" type="button"
 				onclick="PF('newAd').show();"></p:commandButton>
+			<h:form>
+				<p:selectOneListbox id="current" value="#{myAds.current}">
+					<f:selectItems value="#{myAds.published}" var="ad" itemValue="#{ad.id}"
+						itemLabel="#{ad.description}" />
+				</p:selectOneListbox>
 
+				<p:commandButton icon="ui-icon ui-icon-pencil"
+					onclick="PF('editAd').show();"></p:commandButton>
+				<p:commandButton icon="ui-icon ui-icon-trash">
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+
+				<p:commandButton icon="ui-icon ui-icon-trash"
+					action="#{myAds.delete}" ></p:commandButton>
+
+			</h:form>
 			<p:dataGrid columns="1" rows="8" paginator="true" var="ad"
 				value="#{MyAds.published}">
 				<p:panel>
 					<h:outputText value="#{ad.description}"></h:outputText>
 					<p:graphicImage value="#{ad.images.toArray()[0]}"></p:graphicImage>
-					
-					<p:commandButton icon="ui-icon ui-icon-pencil"></p:commandButton>
-					
-					<p:commandButton icon="ui-icon ui-icon-trash">
-						<p:confirm header="Confirmation" message="Are you sure?"
-							icon="ui-icon-alert" />
-					</p:commandButton>
-
-					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Yes" type="button" 
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-						<p:commandButton value="No" type="button"
-							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-					</p:confirmDialog>
 				</p:panel>
 			</p:dataGrid>
 		</p:layoutUnit>
@@ -54,7 +56,21 @@
 	</p:layout>
 	<p:dialog header="new ad" widgetVar="newAd" modal="true"
 		appendTo="@(body)" height="500" width="500">
-		<ui:include src="postNewAd.xhtml"></ui:include>
+		<ui:include src="postNewAd.xhtml">
+			<ui:param name="post" value="1"></ui:param>
+		</ui:include>
 	</p:dialog>
+	<p:dialog header="edit ad" widgetVar="editAd" modal="true"
+		appendTo="@(body)" height="500" width="500">
+		<ui:include src="postNewAd.xhtml">
+			<ui:param name="update" value="1"></ui:param>
+		</ui:include>
+	</p:dialog>
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="Yes" type="button" action="#{myAds.delete}"
+			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
 </h:body>
 </html>

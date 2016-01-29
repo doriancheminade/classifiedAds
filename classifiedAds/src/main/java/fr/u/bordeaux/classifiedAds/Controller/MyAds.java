@@ -24,6 +24,7 @@ public class MyAds implements Serializable{
 	private List<Ad> saved;
 	private List<Ad> published;
 	private User u;
+	private int current;
 	
 	@PostConstruct
 	public void init(){
@@ -32,6 +33,9 @@ public class MyAds implements Serializable{
 				.evaluateExpressionGet(facesContext, "#{userCtrl.user}", User.class);
 		saved = addao.getSavedAds(u);
 		published = addao.getPublishedAds(u);
+		current = 0;
+		
+		
 	}
 
 	public List<Ad> getSaved() {
@@ -48,5 +52,22 @@ public class MyAds implements Serializable{
 
 	public void setPublished(List<Ad> published) {
 		this.published = published;
+	}
+
+	public int getCurrent() {
+		return current;
+	}
+
+	public void setCurrent(int current) {
+		this.current = current;
+	}
+	public void delete(){
+		for (Ad ad : published) {
+			if(ad.getId()==current){
+				addao.delete(ad);
+				published.remove(ad);
+			}
+		}
+		
 	}
 }

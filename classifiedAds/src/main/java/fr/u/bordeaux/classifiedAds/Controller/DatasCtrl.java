@@ -11,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class DatasCtrl implements Serializable{
+	private static final long serialVersionUID = -8366051986283513193L;
 	private List<String> city;
 	private List<String> country;
 	

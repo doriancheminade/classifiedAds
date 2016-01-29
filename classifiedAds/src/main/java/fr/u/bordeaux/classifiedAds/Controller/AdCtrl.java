@@ -48,6 +48,9 @@ public class AdCtrl implements Serializable{
 	public Ad getAd(){
 		return ad;
 	}
+	public void setAd(Ad ad){
+		this.ad = ad;
+	}
 
 	public void persist(){
 		String key = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("publisherid");
@@ -78,5 +81,18 @@ public class AdCtrl implements Serializable{
 
 	public void setUploadedfile(UploadedFile uploadedfile) {
 		this.uploadedfile = uploadedfile;
+	}
+
+	public void update(){
+		addao.update(ad);
+	}
+	public void delete(){
+		addao.delete(ad);
+	}
+	public void delete(Ad a){
+		addao.delete(a);
+	}
+	public void find(long id){
+		ad = addao.find(id);
 	}
 }

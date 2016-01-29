@@ -1,7 +1,6 @@
 package fr.u.bordeaux.classifiedAds.DAO;
 
 import java.util.ArrayList;
-import java.util.IdentityHashMap;
 import java.util.List;
 
 import javax.ejb.*;
@@ -9,17 +8,11 @@ import javax.inject.Named;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.script.SimpleBindings;
-
-import org.apache.openjpa.persistence.meta.Members.SetAttributeImpl;
-import org.apache.openjpa.persistence.query.ParameterExpression;
 
 import fr.u.bordeaux.classifiedAds.Entity.Ad;
-import fr.u.bordeaux.classifiedAds.Entity.Address;
 import fr.u.bordeaux.classifiedAds.Entity.User;
 
 @Named
@@ -117,8 +110,17 @@ public class AdDAO {
 	}
 
 	public void persist(Ad a){
-		//UPDATE User's published adslist
+		//TODO UPDATE User's published adslist
 		em.persist(a);
 	}
-
+	public void update(Ad a){
+		em.merge(a);
+	}
+	public void delete(Ad a){
+		a = em.merge(a);
+		em.remove(a);
+	}
+	public Ad find(long id){
+		return em.find(Ad.class, id);
+	}
 }

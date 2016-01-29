@@ -15,8 +15,8 @@
 	<f:facet name="header">saved ads</f:facet>
 	<p:accordionPanel activeIndex="-1">
 		<p:tab title="search options">
-			<p:panelGrid>
-				<h:form>
+			<h:form>
+				<p:panelGrid columns="4" layout="grid">
 					<p:row>
 						<p:column>
 							<p:outputLabel for="country" value="country" />
@@ -72,30 +72,30 @@
 								update="gridsearch"></p:commandButton>
 						</p:column>
 					</p:row>
-				</h:form>
-			</p:panelGrid>
+				</p:panelGrid>
+			</h:form>
 		</p:tab>
 	</p:accordionPanel>
 	<p:dataGrid id="gridsearch" columns="3" rows="8" paginator="true"
-		var="ad" value="#{adsCtrl.ads}">
+		var="ad" value="#{adsCtrl.ads}" layout="grid">
 		<p:panel>
 			<h:outputText value="#{ad.description}"></h:outputText>
 			<p:graphicImage value="#{ad.images.toArray()[0]}"></p:graphicImage>
 			<p:accordionPanel activeIndex="-1">
 				<p:tab title="details">
-					<p:panelGrid columns="2" >
+					<p:panelGrid columns="2" layout="grid">
 						<h:outputLabel value="country"></h:outputLabel>
 						<h:outputText value="#{ad.address.country}"></h:outputText>
-		
+
 						<h:outputLabel value="area"></h:outputLabel>
 						<h:outputText value="#{ad.address.area}"></h:outputText>
-		
+
 						<h:outputLabel value="street"></h:outputLabel>
 						<h:outputText value="#{ad.address.street}"></h:outputText>
-		
+
 						<h:outputLabel value="address details"></h:outputLabel>
 						<h:outputText value="#{ad.address.misc}"></h:outputText>
-						
+
 						<h:outputLabel value="contact"></h:outputLabel>
 						<h:outputText value="#{ad.publisher.mail}"></h:outputText>
 					</p:panelGrid>

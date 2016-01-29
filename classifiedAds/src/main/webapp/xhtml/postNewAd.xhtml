@@ -11,6 +11,7 @@
 <h:body>
 	<h:form enctype="multipart/form-data">
 		<p:panelGrid columns="3" layout="grid">
+			#{ad.description}
 
 			<p:outputLabel value="description" for="description"></p:outputLabel>
 			<p:inputTextarea id="description" value="#{adCtrl.ad.description}"></p:inputTextarea>
@@ -43,8 +44,10 @@
 
 			<input type="hidden" name="publisherid" value="#{userCtrl.user.id}"></input>
 
-			<p:commandButton value="post" 
+			<p:commandButton value="post" rendered="#{post==1}"
 				action="#{adCtrl.persist}"></p:commandButton>
+			<p:commandButton value="update" rendered="#{update==1}"
+				action="#{adCtrl.update}"></p:commandButton>
 		</p:panelGrid>
 	</h:form>
 </h:body>

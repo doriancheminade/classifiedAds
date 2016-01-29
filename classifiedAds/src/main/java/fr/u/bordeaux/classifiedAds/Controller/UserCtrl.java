@@ -45,7 +45,6 @@ public class UserCtrl {
 	}
 	public List<Ad> getUsersAds() {
 		return addao.getPublishedAds(dao.getUser());
-		//return dao.getUser().getPublishedAds();
 	}
 	public List<Ad> getSavedAds() {
 		return addao.getSavedAds(dao.getUser());

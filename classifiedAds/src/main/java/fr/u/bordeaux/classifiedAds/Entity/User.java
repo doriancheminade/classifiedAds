@@ -52,8 +52,6 @@ public class User implements Serializable{
 	}
 
 	public void setMail(String mail) {
-		System.out.println("SET MAIL "+mail);
-		System.out.println("SET MAIL \n"+this);
 		this.mail = mail;
 	}
 
