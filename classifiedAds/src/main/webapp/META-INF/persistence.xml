@@ -8,6 +8,8 @@
   	<!-- <jta-data-source>ClassifiedAdsDB</jta-data-source>-->
     <class>fr.u.bordeaux.classifiedAds.Entity.Ad</class>
     <class>fr.u.bordeaux.classifiedAds.Entity.User</class>
+    <class>fr.u.bordeaux.classifiedAds.Entity.Country</class>
+    <class>fr.u.bordeaux.classifiedAds.Entity.Area</class>
     <!-- <class>fr.u.bordeaux.classifiedAds.Entity.Address</class>-->
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ClassifiedAdsDB" />
