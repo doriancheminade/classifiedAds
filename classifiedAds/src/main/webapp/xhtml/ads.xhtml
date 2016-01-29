@@ -4,7 +4,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:outputScript name="jquery/jquery.js" library="primefaces" />
 <h:head>
@@ -17,23 +16,23 @@
 			<f:facet name="header">posted ads</f:facet>
 			<p:commandButton value="post new ad" type="button"
 				onclick="PF('newAd').show();"></p:commandButton>
-			<h:form>
-				<p:selectOneListbox id="current" value="#{myAds.current}">
-					<f:selectItems value="#{myAds.published}" var="ad" itemValue="#{ad.id}"
-						itemLabel="#{ad.description}" />
-				</p:selectOneListbox>
 
-				<p:commandButton icon="ui-icon ui-icon-pencil"
-					onclick="PF('editAd').show();"></p:commandButton>
-				<p:commandButton icon="ui-icon ui-icon-trash">
-					<p:confirm header="Confirmation" message="Are you sure?"
-						icon="ui-icon-alert" />
-				</p:commandButton>
+			<p:selectOneListbox value="#{myAds.current}">
+				<f:selectItems value="#{myAds.published}" var="ad"
+					itemValue="#{ad.id}" itemLabel="#{ad.description}" />
+			</p:selectOneListbox>
 
-				<p:commandButton icon="ui-icon ui-icon-trash"
-					action="#{myAds.delete}" ></p:commandButton>
+			<p:commandButton icon="ui-icon ui-icon-pencil"
+				onclick="PF('editAd').show();"></p:commandButton>
+			<p:commandButton icon="ui-icon ui-icon-trash">
+				<p:confirm header="Confirmation" message="Are you sure?"
+					icon="ui-icon-alert" />
+			</p:commandButton>
 
-			</h:form>
+			<p:commandButton icon="ui-icon ui-icon-trash"
+				action="#{myAds.delete}"></p:commandButton>
+
+
 			<p:dataGrid columns="1" rows="8" paginator="true" var="ad"
 				value="#{MyAds.published}">
 				<p:panel>
@@ -46,7 +45,7 @@
 		<p:layoutUnit position="center" resizable="true" minSize="40">
 			<f:facet name="header">saved ads</f:facet>
 			<p:dataGrid columns="3" rows="8" paginator="true" var="ad"
-				value="#{userCtrl.savedAds}">
+				value="#{myAds.saved}">
 				<p:panel>
 					<h:outputText value="#{ad.description}"></h:outputText>
 					<p:graphicImage value="#{ad.images.toArray()[0]}"></p:graphicImage>
@@ -64,10 +63,11 @@
 		appendTo="@(body)" height="500" width="500">
 		<ui:include src="postNewAd.xhtml">
 			<ui:param name="update" value="1"></ui:param>
+			<ui:param name="ad" value="#{myAds.current}"></ui:param>
 		</ui:include>
 	</p:dialog>
 	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-		<p:commandButton value="Yes" type="button" action="#{myAds.delete}"
+		<p:commandButton value="Yes" type="button"
 			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 		<p:commandButton value="No" type="button"
 			styleClass="ui-confirmdialog-no" icon="ui-icon-close" />

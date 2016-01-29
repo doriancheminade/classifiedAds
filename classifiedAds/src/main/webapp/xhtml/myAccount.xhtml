@@ -16,6 +16,8 @@
 	<ui:include src="tabMenu.xhtml"></ui:include>
 	<h:form>
 		<h:panelGrid>
+			<p:commandButton value="log out" action="#{userCtrl.logout}"></p:commandButton>
+			
 			<p:outputLabel value="mail" for="mail"></p:outputLabel>
 			<p:inputText id="mail" value="#{userCtrl.user.mail}"></p:inputText>
 

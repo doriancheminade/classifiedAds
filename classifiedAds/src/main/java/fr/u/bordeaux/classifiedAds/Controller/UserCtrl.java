@@ -1,13 +1,9 @@
 package fr.u.bordeaux.classifiedAds.Controller;
 
-import java.util.List;
-
 import javax.ejb.EJB;
 import javax.faces.bean.*;
 
-import fr.u.bordeaux.classifiedAds.DAO.AdDAO;
 import fr.u.bordeaux.classifiedAds.DAO.UserDAO;
-import fr.u.bordeaux.classifiedAds.Entity.Ad;
 import fr.u.bordeaux.classifiedAds.Entity.User;
 
 @ManagedBean
@@ -15,9 +11,6 @@ import fr.u.bordeaux.classifiedAds.Entity.User;
 public class UserCtrl {
 	@EJB
 	private UserDAO dao;
-	@EJB
-	private AdDAO addao;
-
 
 	public User getUser(){
 		return dao.getUser();
@@ -42,12 +35,6 @@ public class UserCtrl {
 	}
 	public UserDAO getDAO(){
 		return dao;
-	}
-	public List<Ad> getUsersAds() {
-		return addao.getPublishedAds(dao.getUser());
-	}
-	public List<Ad> getSavedAds() {
-		return addao.getSavedAds(dao.getUser());
 	}
 	public UserDAO getDao() {
 		return dao;

@@ -24,7 +24,7 @@ public class MyAds implements Serializable{
 	private List<Ad> saved;
 	private List<Ad> published;
 	private User u;
-	private int current;
+	private long current;
 	
 	@PostConstruct
 	public void init(){
@@ -54,12 +54,24 @@ public class MyAds implements Serializable{
 		this.published = published;
 	}
 
-	public int getCurrent() {
+	public long getCurrent() {
 		return current;
 	}
 
 	public void setCurrent(int current) {
 		this.current = current;
+	}
+	public Ad getCurrentAd() {
+		for (Ad ad : published) {
+			if(ad.getId()==current){
+				return published.get((int)current);
+			}
+		}
+		return null;
+	}
+
+	public void setCurrentAd(Ad current) {
+		this.current = current.getId();
 	}
 	public void delete(){
 		for (Ad ad : published) {
@@ -68,6 +80,5 @@ public class MyAds implements Serializable{
 				published.remove(ad);
 			}
 		}
-		
 	}
 }
